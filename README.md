@@ -9,6 +9,7 @@ We're going to create a Padrino application that models a TODO list.
 * Generate a controller called Tasks, which can do the following things:
 
 | HTTP Verb | Action |
+|:----------|:-----------|
 | GET       | :index |
 | POST      | :index |
 | PUT       | :index |
@@ -23,15 +24,18 @@ We're going to create a Padrino application that models a TODO list.
 * Run it again in test mode: ```RACK_ENV=test padrino rake ar:migrate```
 
 * Add the database cleaner gem, run bundle and add the following code to your controller blocks:
+like this
 
-```setup do
-DatabaseCleaner.strategy = :truncation
-DatabaseCleaner.start
-end```
-
-```teardown do
-   DatabaseCleaner.clean
-   end```
+    setup do
+        DatabaseCleaner.strategy = :truncation
+        DatabaseCleaner.start
+    end
+    
+and
+    
+    teardown do
+        DatabaseCleaner.clean
+    end
 
 * Disable the security settings for protection and CSRF in the config/apps.rb file.
 
@@ -42,4 +46,5 @@ end```
 * Let's add some features to our Task. WITHOUT destroying your model, add a field called "Description", and update your views to use a <textarea> element to capture the description. HINT: Use a new migration. Update your controllers to include the new attribute.
 * Add a priority, an integer field: 1 means most important. Update your controllers and views.
 * Change your index view to order the tasks by priorty. Lookup the .order method in ActiveRecord for tips on how to do this.
+* Add checkboxes by each task, and add the ability to delete the tasks that are checked
 * Pretty it up using CSS/HTML. How about making priority 1 tasks in red, or some other colour format?
