@@ -9,14 +9,14 @@ TaskAssignment::App.controllers :tasks do
   post :index do
     p = Task.new(:title => params[:title])
     p.save
-    redirect "/tasks/show/#{p.title}"
+    redirect "/tasks/show/#{p.id}"
   end
 
-  put :index, :with => :title do
+  put :index, :with => :id do
     @task = Task.find(params[:title])
     @task.title = params[:title]
     @task.save
-    redirect "/tasks/show/#{@task.title}"
+    render"/tasks/show/#{@task.id}"
   end
 
   delete :destroy, :with => :id  do
