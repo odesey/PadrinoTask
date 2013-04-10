@@ -16,6 +16,7 @@ GEM
     bourne (1.4.0)
       mocha (~> 0.13.2)
     builder (3.0.4)
+    database_cleaner (0.9.1)
     erubis (2.7.0)
     http_router (0.11.0)
       rack (>= 1.0.0)
@@ -92,6 +93,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (>= 3.1)
+  database_cleaner
   erubis (~> 2.7.0)
   padrino (= 0.11.1)
   rack-test

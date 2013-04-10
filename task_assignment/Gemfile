@@ -12,6 +12,7 @@ source 'https://rubygems.org'
 
 # Project requirements
 gem 'rake'
+gem 'database_cleaner'
 
 # Component requirements
 gem 'erubis', '~> 2.7.0'

@@ -1,50 +1,42 @@
 TaskAssignment::App.controllers :tasks do
   
-  # get :index, :map => '/foo/bar' do
-  #   session[:foo] = 'bar'
-  #   render 'index'
-  # end
-
-  # get :sample, :map => '/sample/url', :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
-
-  # get :foo, :with => :id do
-  #   'Maps to url '/foo/#{params[:id]}''
-  # end
-
-  # get '/example' do
-  #   'Hello world!'
-  # end
   
   get :index do
-
+    @tasks = Task.all
+    render '/tasks/index'
   end
 
   post :index do
-
+    p = Task.new(:title => params[:title])
+    p.save
+    redirect "/products/show/#{p.title}"
   end
 
-  put :index do
-
+  put :index, :with => :title do
+    @task = Task.find(params[:title])
+    @task.title = params[:title]
+    @task.save
+    redirect "/tasks/show/#{@task.title}"
   end
 
-  delete :index do
-
+  delete :destroy, :with => :id  do
+    @Task = Task.find(params[:id])
+    @Task.destroy
+    redirect '/tasks'
   end
 
-  get :show do
-
+  get :show, :with => :title do
+    @tasks = Task.find(params[:title])
+    render '/tasks/show'
   end
 
-  get :edit do
-
+  get :edit, :with => :title do
+    @task = Task.find(params[:title])
+    render '/tasks/edit'
   end
 
   get :new do
-
+    render '/tasks/new'
   end
 
 end
