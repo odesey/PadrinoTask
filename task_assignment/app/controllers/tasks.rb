@@ -9,7 +9,7 @@ TaskAssignment::App.controllers :tasks do
   post :index do
     p = Task.new(:title => params[:title])
     p.save
-    redirect "/products/show/#{p.title}"
+    redirect "/tasks/show/#{p.title}"
   end
 
   put :index, :with => :title do
@@ -25,13 +25,13 @@ TaskAssignment::App.controllers :tasks do
     redirect '/tasks'
   end
 
-  get :show, :with => :title do
-    @tasks = Task.find(params[:title])
+  get :show, :with => :id do
+    @tasks = Task.find(params[:id])
     render '/tasks/show'
   end
 
-  get :edit, :with => :title do
-    @task = Task.find(params[:title])
+  get :edit, :with => :id do
+    @task = Task.find(params[:id])
     render '/tasks/edit'
   end
 

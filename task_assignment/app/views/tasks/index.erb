@@ -12,9 +12,9 @@
 			<% @tasks.each do |t| %>
 			<tr>
 			   <td><%= t.title %></td>
-			   <td><%= link_to 'Edit', url_for(:tasks, :edit, :title => t.title) %></td>
+			   <td><%= link_to 'Edit', url_for(:tasks, :edit, :id => t.id) %></td>
 
-			   <td><%= button_to 'Delete', url(:tasks, :destroy, :id => t.title), :method => :delete %></td>
+			   <td><%= button_to 'Delete', url(:tasks, :destroy, :id => t.id), :method => :delete %></td>
 			   <% end %>
 
 
